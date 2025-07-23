@@ -5,7 +5,7 @@ import fs from 'fs-extra'
 import path from 'path'
 
 import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
+import { dirname } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -23,7 +23,6 @@ program
         console.log(`🚀 Creating project in ${target}…`)
         await fs.ensureDir(target)
 
-        // 1) Genera package.json
         const pkg = {
             name: projectName,
             version: opts.version,
@@ -55,11 +54,9 @@ program
             spaces: 2,
         })
 
-        // 2) Copia template
         const templatesDir = path.resolve(__dirname, '../templates')
         await fs.copy(templatesDir, target)
 
-        // 3) Installa dipendenze
         console.log('📦 Installing dependencies')
         await execa('npm', ['install'], { cwd: target, stdio: 'inherit' })
 
