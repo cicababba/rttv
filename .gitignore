@@ -1,0 +1,50 @@
+Node.js dependencies
+
+node_modules/
+
+Build output
+
+dist/
+build/
+.vite/
+
+Vite cache
+
+.cache/
+
+Environment variables
+
+.env
+.env.*.local
+
+Log files
+
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+Typescript cache
+
+*.tsbuildinfo
+
+Editor directories and files
+
+.vscode/
+.idea/
+*.suo
+.ntvs
+*.njsproj
+*.sln
+
+macOS
+
+.DS_Store
+
+Optional: ignore coverage reports if using Jest or other testers
+
+coverage/
+
+Optional: ignore npx link artifacts
+
+npm-link.json
+

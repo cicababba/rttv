@@ -1,0 +1,14 @@
+{
+  "name": "rttv",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "create-rttv-app": "bin/create-app.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "execa": "^7.2.0",
+    "fs-extra": "^11.3.0"
+  }
+}
