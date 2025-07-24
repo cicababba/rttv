@@ -25,5 +25,17 @@
     "fs-extra": "^11.3.0",
     "inquirer": "^12.8.2",
     "ora": "^8.2.0"
-  }
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "typescript",
+    "tailwindcss",
+    "cli",
+    "scaffolding",
+    "boilerplate",
+    "starter",
+    "template",
+    "generator"
+  ]
 }
