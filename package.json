@@ -1,13 +1,13 @@
 {
   "name": "rttv",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React+Vite+TS+Tailwind scaffolder CLI",
   "private": false,
   "type": "module",
   "bin": {
     "create-rttv-app": "bin/create-app.js"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/cicababba/rttv.git"
   },
