@@ -32,6 +32,13 @@ program
         )
         const target = path.resolve(process.cwd(), projectName)
 
+        if (await fs.pathExists(target)) {
+            console.error(
+                `❌ Folder "${projectName}" already exists. Choose a different name or remove it first.`
+            )
+            process.exit(1)
+        }
+
         let spinner = ora(`🚀 Creating project folder at ${target}`).start()
         try {
             await fs.ensureDir(target)
