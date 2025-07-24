@@ -8,7 +8,13 @@ import inquirer from 'inquirer'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
-// Setup __dirname in ESM
+import {
+    getPkg,
+    gitInitPrompt,
+    addRemotePrompt,
+    remoteUrlPrompt,
+} from './pkg.js'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -29,40 +35,16 @@ program
         let spinner = ora(`🚀 Creating project folder at ${target}`).start()
         try {
             await fs.ensureDir(target)
-            spinner.succeed('✅ Project folder created')
+            spinner.succeed('Project folder created')
         } catch (error) {
             spinner.fail('❌ Failed to create project folder')
             process.exit(1)
         }
 
         spinner = ora('✨ Generating package.json').start()
-        const pkg = {
-            name: projectName,
-            version: opts.version,
-            description: opts.description,
-            author: opts.author,
-            private: true,
-            scripts: {
-                dev: 'vite',
-                build: 'tsc -b && vite build',
-                preview: 'vite preview',
-            },
-            dependencies: {
-                react: '^19.1.0',
-                'react-dom': '^19.1.0',
-            },
-            devDependencies: {
-                vite: '^7.0.4',
-                typescript: '^5.8.3',
-                tailwindcss: '^4.1.11',
-                postcss: '^8.5.6',
-                '@tailwindcss/postcss': '^4.1.11',
-                autoprefixer: '^10.4.21',
-                '@vitejs/plugin-react': '^4.6.0',
-                '@types/react': '^19.1.8',
-                '@types/react-dom': '^19.1.6',
-            },
-        }
+
+        const pkg = getPkg(projectName, opts)
+
         try {
             await fs.writeJson(path.join(target, 'package.json'), pkg, {
                 spaces: 2,
@@ -83,14 +65,7 @@ program
             process.exit(1)
         }
 
-        const { initializeGit } = await inquirer.prompt([
-            {
-                type: 'confirm',
-                name: 'initializeGit',
-                message: 'Do you want to initialize a Git repository?',
-                default: false,
-            },
-        ])
+        const { initializeGit } = await inquirer.prompt([gitInitPrompt])
 
         if (initializeGit) {
             spinner = ora('🔧 Initializing git repository').start()
@@ -104,31 +79,17 @@ program
                 await fs.copyFile(gitignoreSrc, gitignoreDest)
                 spinner.succeed('.gitignore added')
 
-                const { addRemote } = await inquirer.prompt([
-                    {
-                        type: 'confirm',
-                        name: 'addRemote',
-                        message:
-                            'Do you want to add a Git remote (e.g. GitHub)?',
-                        default: false,
-                    },
-                ])
+                const { addRemote } = await inquirer.prompt([addRemotePrompt])
 
                 if (addRemote) {
                     const { remoteUrl } = await inquirer.prompt([
-                        {
-                            type: 'input',
-                            name: 'remoteUrl',
-                            message: 'Enter the remote repository URL:',
-                            validate: (input) =>
-                                input.startsWith('http') ||
-                                'Please enter a valid URL',
-                        },
+                        remoteUrlPrompt,
                     ])
 
                     spinner = ora(
                         `🔗 Adding remote origin ${remoteUrl}`
                     ).start()
+
                     await execa('git', ['remote', 'add', 'origin', remoteUrl], {
                         cwd: target,
                     })
