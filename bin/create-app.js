@@ -168,13 +168,6 @@ program
         await fs.copyFile(gitignoreSrc, gitignoreDest)
         spinner.succeed('.gitignore added')
 
-        const { addRemote } = await inquirer.prompt([addRemotePrompt])
-        if (addRemote) {
-          const { remoteUrl } = await inquirer.prompt([remoteUrlPrompt])
-          spinner = ora(`🔗 Adding remote origin ${remoteUrl}`).start()
-          await execa('git', ['remote', 'add', 'origin', remoteUrl], { cwd: target })
-          spinner.succeed('Remote origin added')
-        }
       } catch (e) {
         spinner.fail('Git setup failed')
       }

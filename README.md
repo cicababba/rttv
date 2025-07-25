@@ -89,8 +89,7 @@ create‑rttv‑app <project-name> [options]
 
 6. **Optional Git setup**  
    - Initialize `git init`  
-   - Copy over a standard `.gitignore`  
-   - Optionally add a `remote origin` URL
+   - Copy over a standard `.gitignore`
 
 7. **Final instructions**  
    ```bash
