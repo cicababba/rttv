@@ -2,21 +2,25 @@
 
 A simple CLI scaffold to boot up a Vite + React‑TypeScript project with TailwindCSS, sensible defaults and optional Git setup.
 
+⚙️ This CLI uses [create-vite](https://www.npmjs.com/package/create-vite) internally to generate the base structure.
+
+
 ---
 
 ## Features
 
-- 🔥 Generates a new Vite React‑TS project  
-- 📝 Applies your `description`, `version`, `author` and sets `"type": "module"` in `package.json`  
-- 📦 Installs base dependencies plus TailwindCSS plugins   
-- 🔧 Optional Git initialization, `.gitignore`, and remote `origin` setup
+- 🔥 Generates a new Vite React‑TS with TailwindCSS ready to go project  
+- 📝 Applies your `description`, `version`, `author`
+- 📦 Installs base dependencies plus TailwindCSS plugins
+- 🔧 Optional Git initialization, `.gitignore`, and remote `origin` setup  
+- 🪄 All steps wrapped in a friendly spinner & interactive prompts
 
 ---
 
 ## Prerequisites
 
 - **Node.js** ≥ 16.x  
-- Your preferred package manager: npm / yarn / pnpm  
+- NPM package manager: npm
 - **npx** (comes with npm ≥ 5.2)
 
 ---
@@ -26,7 +30,7 @@ A simple CLI scaffold to boot up a Vite + React‑TypeScript project with Tail
 You can install globally:
 
 ```bash
-npm install -g create‑rttv‑app
+npm install -g rttv
 ```
 
 ---
@@ -63,7 +67,7 @@ create‑rttv‑app <project-name> [options]
    ```bash
    npm create vite@latest <project-name> -- --template react-ts
    ```
-   (stdout hidden by default; only errors are shown)
+   (stdout hidden; only errors are shown)
 
 3. **`package.json` tweaks**  
    - Sets your `description`, `version`, `author`  
@@ -80,12 +84,12 @@ create‑rttv‑app <project-name> [options]
    ```
 
 5. **Custom config & entry files**  
-   - Replaces `vite.config.ts` with the one in `templates/conf/`  
-   - Deletes default `src/*.css` & `src/*.tsx` and copies in your templates from `templates/appFiles/`
+   - Replaces `vite.config.ts` with the one in adding the `tailwindcss` plugin
+   - Replaces default `src/*.css` & `src/*.tsx` with the needed to make TailwindCSS work
 
 6. **Optional Git setup**  
    - Initialize `git init`  
-   - Copy over your `.gitignore`  
+   - Copy over a standard `.gitignore`  
    - Optionally add a `remote origin` URL
 
 7. **Final instructions**  
@@ -134,4 +138,4 @@ npx create‑rttv‑app my‑cool‑project   --description "A sweet new starter
 
 ## License
 
-MIT © [Your Name or Organization]
+MIT © [cicababba]
