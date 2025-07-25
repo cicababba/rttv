@@ -13,7 +13,6 @@ import {
     remoteUrlPrompt,
 } from './pkg.js'
 
-import util from 'util'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -58,7 +57,7 @@ program
         '--',
         '--template',
         'react-ts'
-      ],{ stdio: 'ignore' })
+      ],{ stdio: ['ignore', 'ignore', 'inherit'] })
       spinner.succeed('Vite template created')
     } catch (error) {
       spinner.fail('Failed to run create-vite')
@@ -83,7 +82,7 @@ program
 
     spinner = ora('📦 Installing base dependencies').start()
     try {
-      await execa('npm', ['install'], { cwd: target, stdio: 'ignore' })
+      await execa('npm', ['install'], { cwd: target, stdio: ['ignore', 'ignore', 'inherit'] })
       spinner.succeed('Base dependencies installed')
     } catch (e) {
       spinner.fail('Failed to install base dependencies')
@@ -95,7 +94,7 @@ program
       await execa('npm', ['install',
         'tailwindcss',
         '@tailwindcss/vite',
-      ], { cwd: target, stdio: 'ignore' })
+      ], { cwd: target, stdio: ['ignore', 'ignore', 'inherit'] })
       spinner.succeed('Tailwind deps installed')
     } catch (e) {
       spinner.fail('Failed to install Tailwind deps')
@@ -110,7 +109,6 @@ program
         await fs.copy(viteConfig, srcViteConfig)
         spinner.succeed('vite.config.ts updated')
     } catch (error) {
-        console.error(util.inspect(error, { showHidden: true, depth: null }))
         spinner.fail('Failed to copy templates')
         process.exit(1)
     }
