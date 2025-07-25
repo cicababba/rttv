@@ -180,6 +180,18 @@ program
       }
     }
 
+    spinner = ora('🧩 Adding README.md').start()
+    const readmePath = path.join(__dirname, '..', 'templates', 'conf', 'README.md')
+    const srcReadme = path.join(target, 'README.md')
+    try {
+        await fs.remove(srcReadme) 
+        await fs.copy(readmePath, srcReadme)
+        spinner.succeed('README.md added')
+    } catch (error) {
+        spinner.fail('Failed to copy templates')
+        process.exit(1)
+    }
+
     console.log('\n🎉 Done! Your app is now ready to rock! Just run:')
     console.log(`   cd ${projectName}`)
     console.log(`   ${'npm'} run dev`)
