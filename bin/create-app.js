@@ -142,6 +142,11 @@ program
       spinner.succeed('App.tsx updated')
 
       const srcPath = path.join(target, 'src');
+
+      const reactSvgPath = path.join(srcPath, 'assets', 'react.svg');
+      if(fs.existsSync(reactSvgPath))
+        await fs.remove(reactSvgPath)
+      spinner.succeed('Removed useless staff')
       
       await fs.copy(templatePath, srcPath);
       spinner.succeed('Main files updated')
