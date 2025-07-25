@@ -9,22 +9,27 @@ const getPkg = (projectName, opts) => {
         scripts: {
             dev: 'vite',
             build: 'tsc -b && vite build',
+            lint: "eslint .",
             preview: 'vite preview',
         },
         dependencies: {
-            react: '^19.1.0',
-            'react-dom': '^19.1.0',
+            "@tailwindcss/vite": "^4.1.11",
+            "react": "^19.1.0",
+            "react-dom": "^19.1.0",
+            "tailwindcss": "^4.1.11"
         },
         devDependencies: {
-            vite: '^7.0.4',
-            typescript: '^5.8.3',
-            tailwindcss: '^4.1.11',
-            postcss: '^8.5.6',
-            '@tailwindcss/postcss': '^4.1.11',
-            autoprefixer: '^10.4.21',
-            '@vitejs/plugin-react': '^4.6.0',
-            '@types/react': '^19.1.8',
-            '@types/react-dom': '^19.1.6',
+            "@eslint/js": "^9.30.1",
+            "@types/react": "^19.1.8",
+            "@types/react-dom": "^19.1.6",
+            "@vitejs/plugin-react": "^4.6.0",
+            "eslint": "^9.30.1",
+            "eslint-plugin-react-hooks": "^5.2.0",
+            "eslint-plugin-react-refresh": "^0.4.20",
+            "globals": "^16.3.0",
+            "typescript": "~5.8.3",
+            "typescript-eslint": "^8.35.1",
+            "vite": "^7.0.4"
         },
     }
 }
