@@ -1,68 +1,137 @@
-# create-rttv-app
+# create‑rttv‑app
 
-**create-rttv-app** is a minimal CLI tool to scaffold a React + Vite + TypeScript + Tailwind CSS project in one command, now with interactive Git initialization and progress feedback.
+A simple CLI scaffold to boot up a Vite + React‑TypeScript project with TailwindCSS, sensible defaults and optional Git setup.
 
-## 🚀 Features
+---
 
-- Generates a `package.json` with React, ReactDOM, Vite, TypeScript, TailwindCSS, and related dependencies.
-- Copies configuration files (TSConfig, Vite, Tailwind, PostCSS) and boilerplate assets (`index.html`, `src/`).
-- Interactive Git setup: prompts to initialize a repository, add a `.gitignore`, and configure a remote.
-- Visual progress spinners display status for each step (folder creation, templating, Git setup, and installation).
-- Automatically installs dependencies after setup.
-- Offers CLI options for project name, description, version, and author.
+## Features
 
-## 🔧 Prerequisites
+- 🔥 Generates a new Vite React‑TS project  
+- 📝 Applies your `description`, `version`, `author` and sets `"type": "module"` in `package.json`  
+- 📦 Installs base dependencies plus TailwindCSS plugins   
+- 🔧 Optional Git initialization, `.gitignore`, and remote `origin` setup
 
-- Node.js v16 or higher
-- npm (Node Package Manager)
-- Internet connection to download dependencies
+---
 
-## 📥 Installation
+## Prerequisites
 
-You can run the CLI without installing it globally via `npx`:
+- **Node.js** ≥ 16.x  
+- Your preferred package manager: npm / yarn / pnpm  
+- **npx** (comes with npm ≥ 5.2)
 
-```bash
-npx rttv <project-name> [options]
-```
+---
 
-Or install it globally:
+## Installation
+
+You can install globally:
 
 ```bash
-npm install -g create-rttv-app
-# then run
-create-rttv-app <project-name> [options]
+npm install -g create‑rttv‑app
 ```
 
-## ⚙️ Usage
+---
+
+## Usage
 
 ```bash
-create-rttv-app <project-name> [options]
+create‑rttv‑app <project-name> [options]
 ```
 
-| Option                     | Description          | Default  |
-| -------------------------- | -------------------- | -------- |
-| `-d, --description <desc>` | Project description  | `''`     |
-| `-v, --version <ver>`      | Initial version      | `0.1.0`  |
-| `-a, --author <author>`    | Project author       | `''`     |
+### Arguments
 
+| Name             | Description                      |
+| ---------------- | ------------------------------- |
+| `<project-name>` | New folder & project name       |
 
-## 🛠️ CLI Development
+### Options
 
-To contribute or customize the CLI:
+| Short               | Long                     | Description                                    | Default |
+| ------------------- | ------------------------ | ---------------------------------------------- | ------- |
+| `-d, --description` | `--description <desc>`   | Project description in `package.json`          | `""`    |
+| `-v, --version`     | `--version <ver>`        | Initial version in `package.json`              | `0.1.0` |
+| `-a, --author`      | `--author <author>`      | Author name/email in `package.json`            | `""`    |
+| `--pm <pm>`         | `--pm <pm>`              | Package manager to run installs (npm/yarn/pnpm)| `npm`   |
+
+---
+
+## What Happens Under the Hood
+
+1. **Folder check & overwrite**  
+   - If `<project-name>` already exists, you’ll be asked whether to empty it.
+
+2. **`create-vite` scaffold**  
+   ```bash
+   npm create vite@latest <project-name> -- --template react-ts
+   ```
+   (stdout hidden by default; only errors are shown)
+
+3. **`package.json` tweaks**  
+   - Sets your `description`, `version`, `author`  
+   - Forces `"type": "module"`
+
+4. **Install dependencies**  
+   ```bash
+   cd <project-name>
+   <pm> install
+   ```
+   followed by TailwindCSS plugins:
+   ```bash
+   <pm> install tailwindcss @tailwindcss/vite
+   ```
+
+5. **Custom config & entry files**  
+   - Replaces `vite.config.ts` with the one in `templates/conf/`  
+   - Deletes default `src/*.css` & `src/*.tsx` and copies in your templates from `templates/appFiles/`
+
+6. **Optional Git setup**  
+   - Initialize `git init`  
+   - Copy over your `.gitignore`  
+   - Optionally add a `remote origin` URL
+
+7. **Final instructions**  
+   ```bash
+   cd <project-name>
+   <pm> run dev
+   ```
+
+---
+
+## Folder Structure
+
+```
+create‑rttv‑app/
+├── bin/
+│   └── create-app.js      # CLI entrypoint
+├── templates/
+│   ├── conf/
+│   │   └── vite.config.ts # Your custom Vite config
+│   └── appFiles/          # React + CSS templates to copy into src/
+│       ├── index.css
+│       ├── App.css
+│       ├── main.tsx
+│       └── App.tsx
+├── .gitignore             # Example .gitignore to copy when initializing Git
+└── package.json
+```
+
+---
+
+## Examples
+
+### Basic
 
 ```bash
-# Clone this repository
-git clone <repo-url>
-cd create-rttv-app
-npm install
-
-# Link locally for testing
-npm link
-
-# Edit templates in `templates/`
-# Adjust `bin/create-app.js` to add or refine features
+npx create‑rttv‑app awesome‑app
 ```
 
-## 📜 License
+### With metadata and using yarn
 
-This project is licensed under the MIT License © cicababba
+```bash
+npx create‑rttv‑app my‑cool‑project   --description "A sweet new starter"   --version       "0.2.0"   --author        "Alice <alice@example.com>"   --pm yarn
+```
+
+---
+
+## License
+
+MIT © [Your Name or Organization]

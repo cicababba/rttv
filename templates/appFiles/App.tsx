@@ -4,7 +4,7 @@ function App() {
 
   return (
       <h1 className="text-3xl font-bold">
-        Hello! Ready to take over the world!
+        Hello! Are you ready to take over the world?
       </h1>
   )
 }
