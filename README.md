@@ -22,7 +22,7 @@
 You can run the CLI without installing it globally via `npx`:
 
 ```bash
-npx create-rttv-app <project-name> [options]
+npx rttv <project-name> [options]
 ```
 
 Or install it globally:
