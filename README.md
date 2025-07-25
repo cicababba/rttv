@@ -19,9 +19,7 @@ A simple CLI scaffold to boot up a Vite + React‑TypeScript project with Tail
 
 ## Prerequisites
 
-- **Node.js** ≥ 16.x  
-- NPM package manager: npm
-- **npx** (comes with npm ≥ 5.2)
+- **Node.js** ≥ 16.x 
 
 ---
 
@@ -54,7 +52,6 @@ create‑rttv‑app <project-name> [options]
 | `-d, --description` | `--description <desc>`   | Project description in `package.json`          | `""`    |
 | `-v, --version`     | `--version <ver>`        | Initial version in `package.json`              | `0.1.0` |
 | `-a, --author`      | `--author <author>`      | Author name/email in `package.json`            | `""`    |
-| `--pm <pm>`         | `--pm <pm>`              | Package manager to run installs (npm/yarn/pnpm)| `npm`   |
 
 ---
 
