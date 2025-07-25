@@ -5,6 +5,7 @@ const getPkg = (projectName, opts) => {
         description: opts.description,
         author: opts.author,
         private: true,
+        type: 'module',
         scripts: {
             dev: 'vite',
             build: 'tsc -b && vite build',
