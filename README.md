@@ -98,8 +98,6 @@ create‑rttv‑app <project-name> [options]
 
 ## Generated project structure
 
-## Project Structure
-
 ```
 .
 ├── public/
@@ -138,7 +136,7 @@ npx create‑rttv‑app awesome‑app
 ### With metadata
 
 ```bash
-npx create‑rttv‑app my‑cool‑project   --description "A sweet new starter"   --version       "0.2.0"   --author        "Alice <alice@example.com>"
+npx create‑rttv‑app my‑cool‑project --description "A sweet new starter" --version "0.2.0" --author "Alice <alice@example.com>"
 ```
 
 ---
