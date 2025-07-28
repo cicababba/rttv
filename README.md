@@ -12,7 +12,7 @@ A simple CLI scaffold to boot up a Vite + React‑TypeScript project with Tail
 - 🔥 Generates a new Vite React‑TS with TailwindCSS ready to go project  
 - 📝 Applies your `description`, `version`, `author`
 - 📦 Installs base dependencies plus TailwindCSS plugins
-- 🔧 Optional Git initialization, `.gitignore`, and remote `origin` setup  
+- 🔧 Optional Git initialization, `.gitignore`
 - 🪄 All steps wrapped in a friendly spinner & interactive prompts
 
 ---
@@ -96,22 +96,31 @@ create‑rttv‑app <project-name> [options]
 
 ---
 
-## Folder Structure
+## Generated project structure
+
+## Project Structure
 
 ```
-create‑rttv‑app/
-├── bin/
-│   └── create-app.js      # CLI entrypoint
-├── templates/
-│   ├── conf/
-│   │   └── vite.config.ts # Your custom Vite config
-│   └── appFiles/          # React + CSS templates to copy into src/
-│       ├── index.css
-│       ├── App.css
-│       ├── main.tsx
-│       └── App.tsx
-├── .gitignore             # Example .gitignore to copy when initializing Git
-└── package.json
+.
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   ├── index.html
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── .gitignore
+├── eslint.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ---
@@ -120,14 +129,16 @@ create‑rttv‑app/
 
 ### Basic
 
+#### After install
+
 ```bash
 npx create‑rttv‑app awesome‑app
 ```
 
-### With metadata and using yarn
+### With metadata
 
 ```bash
-npx create‑rttv‑app my‑cool‑project   --description "A sweet new starter"   --version       "0.2.0"   --author        "Alice <alice@example.com>"   --pm yarn
+npx create‑rttv‑app my‑cool‑project   --description "A sweet new starter"   --version       "0.2.0"   --author        "Alice <alice@example.com>"
 ```
 
 ---
