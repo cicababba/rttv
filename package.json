@@ -5,7 +5,13 @@
   "private": false,
   "type": "module",
   "bin": {
-    "create-rttv-app": "bin/create-app.js"
+    "create-rttv-app": "dist/bin/create-app.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -14,7 +20,7 @@
   "author": "cicababba cicababba1@gmail.com",
   "license": "MIT",
   "files": [
-    "bin/",
+    "dist/",
     "templates/",
     "README.md",
     "LICENSE"
@@ -25,6 +31,12 @@
     "fs-extra": "^11.3.0",
     "inquirer": "^12.8.2",
     "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
   },
   "keywords": [
     "react",
