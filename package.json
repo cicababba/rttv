@@ -8,7 +8,7 @@
     "create-rttv-app": "dist/bin/create-app.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r templates dist/",
     "dev": "tsc --watch",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "npm run build"
